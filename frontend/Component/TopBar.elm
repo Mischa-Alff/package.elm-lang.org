@@ -5,11 +5,12 @@ import ColorScheme as C
 import Graphics.Element (..)
 import Signal
 import Text
+import Window
 
 
 topBarHeight = 50
 
-innerWidth = 980
+getInnerWidth outerWidth = if outerWidth >= 980 then 980 else outerWidth-10
 
 logoSize = 28
 
@@ -18,6 +19,8 @@ searchBarWidth = 100
 
 view : Int -> Element
 view outerWidth =
+  let innerWidth = (getInnerWidth outerWidth)
+  in
   let leftPadding =
         (outerWidth - innerWidth) // 2
 
